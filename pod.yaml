@@ -4,6 +4,7 @@ metadata:
   name: argocd-nginx-pod
   labels:
     app.kubernetes.io/name: argocd-nginx 
+    app.kubernetes.io/name1: argocd-nginx1
 spec:
   containers:
   - name: nginx
