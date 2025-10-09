@@ -1,14 +1,20 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: argocd-nginx-pod
-  labels:
-    app.kubernetes.io/name: argocd-nginx 
-    app.kubernetes.io/name1: argocd-nginx1
+  name: todo-ui
 spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-      - containerPort: 80
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-ui
+  template:
+    metadata:
+      labels:
+        app: todo-ui
+    spec:
+      containers:
+      - name: todo-ui
+        image: cofsils.azurecr.io/todo-ui:v1
+        ports:
+        - containerPort: 80
 
